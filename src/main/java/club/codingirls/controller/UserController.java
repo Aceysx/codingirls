@@ -16,7 +16,7 @@ public class UserController {
 
     @RequestMapping("/")
     public String index() {
-        return "login";
+        return "/WEB-INF/login.jsp";
     }
 
     @RequestMapping("/register")

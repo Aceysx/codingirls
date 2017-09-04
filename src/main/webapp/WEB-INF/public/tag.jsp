@@ -5,7 +5,9 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <c:set var="baseurl" value="<%=basePath%>"></c:set>
-<script type="text/javascript" src="${baseurl}/public/common/layui/layui.js"></script>
 <script>
     var baseUrl = "${baseurl}";
 </script>
+<script type="text/javascript" src="${baseurl}/public/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${baseurl}/public/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${baseurl}/public/css/bootstrap.min.css">
