@@ -57,6 +57,6 @@
   <!--</error-page>-->
 
   <welcome-file-list>
-    <welcome-file>/WEB-INF/web/login.jsp</welcome-file>
+    <welcome-file>/WEB-INF/pages/login.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

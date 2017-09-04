@@ -4,7 +4,6 @@
 <head>
     <title>Title</title>
 </head>
-<script src="${baseurl}/public/jquery-3.2.1.min.js"></script>
 <body>
 <form role="form" action="" method="post" class="login-form">
     <div class="form-group">
