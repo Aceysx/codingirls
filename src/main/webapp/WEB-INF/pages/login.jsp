@@ -2,7 +2,7 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>SIGN IN</title>
 </head>
 <body>
 <form role="form" action="" method="post" class="login-form">

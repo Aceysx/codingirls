@@ -19,10 +19,10 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/login1")
     public String login() { return "login"; }
 
-    @RequestMapping("/register")
+    @RequestMapping("/registe1r")
     @ResponseBody
     public Result register(User user) {
         try {

@@ -2,7 +2,7 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>发布职位</title>
+    <title>POST JOB</title>
 </head>
 <body>
 <h1>发布职位页面</h1>

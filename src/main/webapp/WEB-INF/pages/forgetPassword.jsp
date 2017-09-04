@@ -2,9 +2,9 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>SING UP</title>
+    <title>FORGET PASSWORD</title>
 </head>
 <body>
-<h1>注册页面</h1>
+<h1>修改个人信息</h1>
 </body>
 </html>

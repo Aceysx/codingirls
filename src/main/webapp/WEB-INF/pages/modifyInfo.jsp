@@ -2,7 +2,7 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>个人中心</title>
+    <title>ACCOUNT</title>
 </head>
 <body>
 <h1>修改个人信息</h1>
