@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/Aceysx/codingirls.svg?branch=master)](https://travis-ci.org/Aceysx/codingirls)
+)
+
+
+
 ### 环境搭建
 
 #### 1 clone 项目到本地，将`db.properties` 文件放入到 `resources` 目录下
