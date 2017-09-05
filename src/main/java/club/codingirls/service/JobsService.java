@@ -1,7 +1,12 @@
 package club.codingirls.service;
 
-import club.codingirls.entity.User;
+import club.codingirls.dto.SearchDto;
+import club.codingirls.entity.Jobs;
+import club.codingirls.util.PageUtil;
+
+import java.util.List;
 
 public interface JobsService {
 
+    List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil pageUtil);
 }
