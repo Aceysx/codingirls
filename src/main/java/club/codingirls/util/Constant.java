@@ -1,4 +1,4 @@
-package club.codingirls.entity;
+package club.codingirls.util;
 
 public class Constant {
     public static final String SEARCH_SUCCESS = "查询成功";
