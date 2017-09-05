@@ -10,4 +10,6 @@ public interface JobsMapper {
     List<Jobs> queryJobsBySearchDto(Map<String, Object> data);
 
     Long queryJobsCount();
+
+    void insert(Jobs job);
 }
