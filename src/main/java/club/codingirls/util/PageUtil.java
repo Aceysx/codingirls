@@ -1,21 +1,21 @@
 package club.codingirls.util;
 
 public class PageUtil {
-    private Long totalSize;//总页数
+    private Long totalPage;//总页数
     private Integer currentIndex;
     private Integer pageSize; //每页数量
     private Long totalCount;//总记录数
 
-    public Long getTotalSize() {
-        return totalSize;
+    public Long getTotalPage() {
+        return totalPage;
     }
 
-    public void setTotalSize(Long totalSize) {
+    public void setTotalPage(Long totalSize) {
         this.totalCount = totalSize;
         if (totalSize % pageSize != 0) {
-            this.totalSize = totalSize / pageSize + 1;
+            this.totalPage = totalSize / pageSize + 1;
         } else {
-            this.totalSize = totalSize / pageSize;
+            this.totalPage = totalSize / pageSize;
         }
     }
 

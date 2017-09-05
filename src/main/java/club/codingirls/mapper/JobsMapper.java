@@ -1,8 +1,13 @@
 package club.codingirls.mapper;
 
-import club.codingirls.entity.User;
+import club.codingirls.dto.SearchDto;
+import club.codingirls.entity.Jobs;
+import club.codingirls.util.PageUtil;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface JobsMapper {
 
-    void insert(User user);
+    List<Jobs> queryJobsBySearchDto(@Param("pageUtil") PageUtil pageUtil,@Param("searchDto") SearchDto searchDto);
 }

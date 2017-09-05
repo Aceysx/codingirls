@@ -20,4 +20,9 @@ public class JobsServiceImpl implements JobsService {
     public List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil pageUtil) {
         return null;
     }
+
+
+    public void setJobsMapper(JobsMapper jobsMapper) {
+        this.jobsMapper = jobsMapper;
+    }
 }
