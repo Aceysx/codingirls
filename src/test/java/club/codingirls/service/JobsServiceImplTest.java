@@ -14,7 +14,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.mockito.Mockito.when;
 
@@ -46,7 +48,15 @@ public class JobsServiceImplTest {
             job.setJobTypeId(i);
             jobs.add(job);
         }
-        when(jobsMapper.queryJobsBySearchDto(pageUtil, searchDto)).thenReturn(jobs);
+        Map<String, Object> data = new HashMap<>();
+        data.put("start", (pageUtil.getCurrentIndex() - 1) * pageUtil.getPageSize());
+        data.put("end", pageUtil.getPageSize());
+        data.put("categoryId", searchDto.getCategoryId());
+        data.put("typeId", searchDto.getTypeId());
+        data.put("content", searchDto.getSearchContent());
+
+        when(jobsMapper.queryJobsBySearchDto(data)).thenReturn(jobs);
+        when(jobsMapper.queryJobsCount()).thenReturn(100L);
 
         List<Jobs> actual = jobsService.queryJobsPage(searchDto, pageUtil);
 

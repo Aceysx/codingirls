@@ -8,7 +8,9 @@ import club.codingirls.util.PageUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class JobsServiceImpl implements JobsService {
@@ -17,8 +19,16 @@ public class JobsServiceImpl implements JobsService {
     private JobsMapper jobsMapper;
 
     @Override
-    public List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil pageUtil) {
-        return null;
+    public List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil page) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
+        data.put("end", page.getPageSize());
+        data.put("categoryId", searchDto.getCategoryId());
+        data.put("typeId", searchDto.getTypeId());
+        data.put("content", searchDto.getSearchContent());
+        page.setTotalPage(jobsMapper.queryJobsCount());
+
+        return jobsMapper.queryJobsBySearchDto(data);
     }
 
 
