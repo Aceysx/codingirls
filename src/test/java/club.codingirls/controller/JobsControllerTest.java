@@ -34,7 +34,7 @@ public class JobsControllerTest {
     }
 
     @Test
-    public void should_return_jobs_page_by_categoryId_and_typeId_and_searchContent() throws Exception {
+    public void should_return_jobs() throws Exception {
         PageUtil pageUtil = new PageUtil();
         SearchDto searchDto = new SearchDto();
         List<Jobs> jobs = new ArrayList<>();
