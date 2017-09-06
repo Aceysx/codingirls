@@ -49,12 +49,12 @@ public class JobsMapperTest {
 
         Map<String, Object> data = new HashMap<>();
         data.put("start", 1);
-        data.put("end", 10);
+        data.put("pageSize", 10);
         data.put("categoryId", "1");
         data.put("typeId", "1");
         data.put("content", "%aaa%");
 
-        List<Jobs> actual = jobsMapper.queryJobsBySearchDto(data);
+        List<Map<String,String>> actual = jobsMapper.queryJobsBySearchDto(data);
 
         Assert.assertEquals(10, actual.size());
     }

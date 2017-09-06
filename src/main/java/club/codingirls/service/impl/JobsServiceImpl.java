@@ -19,7 +19,7 @@ public class JobsServiceImpl implements JobsService {
     private JobsMapper jobsMapper;
 
     @Override
-    public List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil page) {
+    public List<Map<String,String>> queryJobsPage(SearchDto searchDto, PageUtil page) {
         Map<String, Object> data = new HashMap<>();
         data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
         data.put("end", page.getPageSize());

@@ -3,5 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="club.codingirls.mapper.JobsMapper">
+    <insert id="insert" parameterType="Jobs">
+        INSERT INTO t_job (title, company, description, how_to_apply, category_id, tags, city, country, is_public, is_expiry, user_id, job_type_id)
+        VALUES
+            (#{title}, #{company}, #{description}, #{howToAapply}, #{categoryId}, #{tags}, #{city}, #{country},
+                       #{isPublic}, #{isExpiry}, #{useId}, #{jobTypeId})
+    </insert>
 
+    <select id="queryJobsBySearchDto" parameterType="string" resultType="map">
+        SELECT * FROM t_job
+        <where>
+            <if test="typeId != ''">
+                and job_type_id = #{typeId}
+            </if>
+            <if test="categoryId != ''">
+                and category_id = #{categoryId}
+            </if>
+            and title like #{content}
+            or company like #{content}
+            or description like #{content}
+            limit #{start},#{pageSize}
+        </where>
+
+    </select>
 </mapper>

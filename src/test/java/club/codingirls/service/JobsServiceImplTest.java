@@ -41,11 +41,11 @@ public class JobsServiceImplTest {
         pageUtil.setCurrentIndex(1);
 
         SearchDto searchDto = new SearchDto();
-        List<Jobs> jobs = new ArrayList<>();
+        List<Map<String,String>> jobs = new ArrayList<>();
         for (int i = 0; i < 100; ++i) {
-            Jobs job = new Jobs();
-            job.setCategoryId(i);
-            job.setJobTypeId(i);
+            Map<String,String> job = new HashMap<>();
+            job.put("categoryId",i+"");
+            job.put("JobTypeId",i+"");
             jobs.add(job);
         }
         Map<String, Object> data = new HashMap<>();
@@ -58,7 +58,7 @@ public class JobsServiceImplTest {
         when(jobsMapper.queryJobsBySearchDto(data)).thenReturn(jobs);
         when(jobsMapper.queryJobsCount()).thenReturn(100L);
 
-        List<Jobs> actual = jobsService.queryJobsPage(searchDto, pageUtil);
+        List<Map<String,String>> actual = jobsService.queryJobsPage(searchDto, pageUtil);
 
         Assert.assertEquals(jobs, actual);
         Assert.assertEquals("100", pageUtil.getTotalCount().toString());

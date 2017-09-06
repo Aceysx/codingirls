@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface JobsMapper {
 
-    List<Jobs> queryJobsBySearchDto(Map<String, Object> data);
+    List<Map<String,String>> queryJobsBySearchDto(Map<String, Object> data);
 
     Long queryJobsCount();
 
