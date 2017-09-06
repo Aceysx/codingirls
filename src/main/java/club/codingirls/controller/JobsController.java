@@ -24,7 +24,7 @@ public class JobsController {
     public Result jobs(SearchDto searchDto, PageUtil pageUtil) {
         Map<String, Object> result = new HashMap<>();
         try {
-            List<Map<String,String>> jobs = jobsService.queryJobsPage(searchDto, pageUtil);
+            List<Jobs> jobs = jobsService.queryJobsPage(searchDto, pageUtil);
             result.put("page", pageUtil);
             result.put("searchDto", searchDto);
             result.put("jobs", jobs);

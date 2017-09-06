@@ -4,7 +4,7 @@ public class User {
     private int id;
     private String email;
     private String password;
-    private int avaiable;
+    private int available;
     private String activationCode;
     private String company;
     private String companyAddress;
@@ -34,12 +34,12 @@ public class User {
         this.password = password;
     }
 
-    public int getAvaiable() {
-        return avaiable;
+    public int getAvailable() {
+        return available;
     }
 
-    public void setAvaiable(int avaiable) {
-        this.avaiable = avaiable;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
     public String getActivationCode() {

@@ -9,5 +9,5 @@ import java.util.Map;
 
 public interface JobsService {
 
-    List<Map<String,String>> queryJobsPage(SearchDto searchDto, PageUtil pageUtil);
+    List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil pageUtil);
 }

@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,9 +37,8 @@ public class JobsControllerTest {
     public void should_return_jobs() throws Exception {
         PageUtil pageUtil = new PageUtil();
         SearchDto searchDto = new SearchDto();
-        List<Map<String,String>> jobs = new ArrayList<>();
-        Map<String,String> job = new HashMap<>();
-        job.put("categoryId","1");
+        List<Jobs> jobs = new ArrayList<>();
+        Jobs job = new Jobs();
         jobs.add(job);
 
         when(jobsService.queryJobsPage(searchDto, pageUtil)).thenReturn(jobs);

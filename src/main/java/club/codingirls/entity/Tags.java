@@ -5,7 +5,7 @@ public class Tags {
     private String name;
     private int number;
     private int createUserId;
-    private int avaiable;
+    private int available;
 
     public int getId() {
         return id;
@@ -39,11 +39,11 @@ public class Tags {
         this.createUserId = createUserId;
     }
 
-    public int getAvaiable() {
-        return avaiable;
+    public int getAvailable() {
+        return available;
     }
 
-    public void setAvaiable(int avaiable) {
-        this.avaiable = avaiable;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 }

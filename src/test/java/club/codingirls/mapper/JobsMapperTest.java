@@ -1,9 +1,7 @@
 package club.codingirls.mapper;
 
 
-import club.codingirls.dto.SearchDto;
 import club.codingirls.entity.Jobs;
-import club.codingirls.util.PageUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,24 +24,24 @@ import java.util.Map;
 public class JobsMapperTest {
     @Autowired
     private JobsMapper jobsMapper;
-    List<Jobs> jobs = new ArrayList<>();
+    List<Map<String,String>> jobs = new ArrayList<>();
 
     @Before
     public void setUp() {
-        for (int i = 0; i < 50; ++i) {
-            Jobs job = new Jobs();
-            job.setTitle("aaa" + i);
-            job.setCompany("aaa" + i);
-            job.setDescription("aaa" + i);
-            job.setCategoryId(i);
-            job.setJobTypeId(i);
+        for (int i = 0; i < 20; ++i) {
+            Map<String,String> job = new HashMap<>();
+            job.put("title","aaa" + i);
+            job.put("company","aaa" + i);
+            job.put("description","aaa" + i);
+            job.put("categoryId",Math.random()*4+"");
+            job.put("jobTypeId",Math.random()*4+"");
             jobs.add(job);
         }
     }
 
     @Test
     public void should_return_jobs_page_by_categoryId_and_typeId_and_searchContent() {
-        for (Jobs job : jobs) {
+        for (Map<String,String> job : jobs) {
             jobsMapper.insert(job);
         }
 
@@ -54,8 +52,10 @@ public class JobsMapperTest {
         data.put("typeId", "1");
         data.put("content", "%aaa%");
 
-        List<Map<String,String>> actual = jobsMapper.queryJobsBySearchDto(data);
+        Long count = jobsMapper.queryJobsCount(data);
+        List<Jobs> actual = jobsMapper.queryJobsBySearchDto(data);
 
+        Assert.assertEquals("20",count.toString());
         Assert.assertEquals(10, actual.size());
     }
 }
