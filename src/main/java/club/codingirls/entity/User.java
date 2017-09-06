@@ -2,8 +2,13 @@ package club.codingirls.entity;
 
 public class User {
     private int id;
-    private String name;
+    private String email;
     private String password;
+    private int avaiable;
+    private String activationCode;
+    private String company;
+    private String companyAddress;
+    private String companyType;
 
     public int getId() {
         return id;
@@ -13,12 +18,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -27,5 +32,45 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getAvaiable() {
+        return avaiable;
+    }
+
+    public void setAvaiable(int avaiable) {
+        this.avaiable = avaiable;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public String getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(String companyType) {
+        this.companyType = companyType;
     }
 }

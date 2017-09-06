@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="club.codingirls.mapper.JobsMapper">
+    <resultMap id="jobsResult" type="Jobs">
+        <id property="id" column="id"/>
+        <result property="id" column="id"/>
+    </resultMap>
     <insert id="insert" parameterType="Jobs">
         INSERT INTO t_job (title, company, description, how_to_apply, category_id, tags, city, country, is_public, is_expiry, user_id, job_type_id)
         VALUES

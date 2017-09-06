@@ -1,19 +1,21 @@
 package club.codingirls.entity;
 
+import java.util.List;
+
 public class Jobs {
     private int id;
     private String title;
     private String company;
     private String description;
     private String howToApply;
-    private int categoryId;
-    private int jobTypeId;
-    private String tags;
+    private Category category;
+    private JobType jobType;
+    private List<Tags> tags;
     private String city;
     private String country;
     private int isPublic;
     private int isExpiry;
-    private int userId;
+    private User user;
 
     public int getId() {
         return id;
@@ -55,27 +57,12 @@ public class Jobs {
         this.howToApply = howToApply;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public int getJobTypeId() {
-        return jobTypeId;
-    }
-
-    public void setJobTypeId(int jobTypeId) {
-        this.jobTypeId = jobTypeId;
-    }
-
-    public String getTags() {
+    public List<Tags> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(List<Tags> tags) {
         this.tags = tags;
     }
 
@@ -111,11 +98,27 @@ public class Jobs {
         this.isExpiry = isExpiry;
     }
 
-    public int getUserId() {
-        return userId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
