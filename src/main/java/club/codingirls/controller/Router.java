@@ -45,4 +45,9 @@ public class Router {
     public String register() {
         return "register";
     }
+
+    @RequestMapping("/main")
+    public String main() {
+        return "main";
+    }
 }

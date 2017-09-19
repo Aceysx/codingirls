@@ -11,3 +11,4 @@
 <script type="text/javascript" src="${baseurl}/public/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${baseurl}/public/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${baseurl}/public/css/bootstrap.min.css">
+<link rel="stylesheet" href="${baseurl}/css/public.css">
