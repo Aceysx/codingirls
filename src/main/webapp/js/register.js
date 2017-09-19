@@ -2,6 +2,7 @@ let errorEmail = `<span class="text-danger">邮箱格式错误</span>`;
 let availableEmail = `<span class="text-success">邮箱格式正确</span>`;
 let errorPassword = `<span class="text-danger">密码格式错误(两次密码需要一样且长度大于6)</span>`;
 
+
 function checkEmail() {
     let reg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
     if (reg.test($("#email").val())) {

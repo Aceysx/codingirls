@@ -27,6 +27,7 @@
     <p onclick="register()"  class="btn btn-success" id="register_btn">SIGN UP</p>
     <button type="reset" class="btn btn-default">Reset</button>
     <span id="register_info"></span>
+    <p><a href="${baseurl}/forgetPassword" class="text-danger">Didn't receive confirmation instructions?</a></p>
 </form>
 <div id="bottom">
     <p>© 2017 Codingrils</p>
