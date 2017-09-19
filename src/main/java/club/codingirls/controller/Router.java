@@ -8,7 +8,7 @@ public class Router {
 
     @RequestMapping("/index")
     public String index() {
-        return "index";
+        return "redirect:index";
     }
 
     @RequestMapping("/forgetPassword")

@@ -4,12 +4,12 @@
 <head>
     <title>SING UP</title>
 </head>
-<link rel="stylesheet" href="${baseurl}/css/register.css"/>
-<script src="${baseurl}/js/register.js"></script>
+<link rel="stylesheet" href="${baseurl}/css/login.css"/>
+<script src="${baseurl}/js/login.js"></script>
 <body>
 
-<form id="register">
-    <h1>SIGN UP</h1>
+<form id="login">
+    <h1>SIGN IN</h1>
     <div class="form-group">
         <label for="email">EMAIL ADDRESS</label>
         <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" onblur="checkEmail()">
@@ -19,20 +19,15 @@
         <label for="password">PASSWORD</label>
         <input type="password" name="password" class="form-control" id="password" placeholder="PASSWORD">
     </div>
-    <div class="form-group">
-        <label for="password1">PASSWORD CONFIRMATION</label>
-        <input type="password" class="form-control" id="password1" placeholder="PASSWORD CONFIRMATION">
-        <span id="password_info"></span>
-    </div>
 
     <div class="checkbox">
         <label>
             <input type="checkbox"> Remember Me
         </label>
     </div>
-    <button type="button" onclick="register(event)" class="btn btn-success">SIGN UP</button>
-    <button type="reset" class="btn btn-default">Reset</button>
-    <span id="register_info"></span>
+    <p onclick="login()" class="btn btn-success">SIGN IN</p>
+    <p><a href="${baseurl}/forgetPassword" class="text-danger">Forgot your password?</a></p>
+    <p><a href="${baseurl}/forgetPassword" class="text-danger">Didn't receive confirmation instructions?</a></p>
 </form>
 <div id="bottom">
     <p>© 2017 Codingrils</p>

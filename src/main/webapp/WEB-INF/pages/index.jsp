@@ -10,6 +10,7 @@
     <div id="top">
         <span id="title">CODINGIRLS</span>
         <ul id="nav">
+            <li><a href="${baseurl}" >ALL JOBS</a></li>
             <li><a href="${baseurl}/login" target="main">SIGN IN</a></li>
             <li><a href="${baseurl}/register" target="main">SIGN UP</a></li>
             <li><a href="${baseurl}/postJob" target="main">POST A JOB</a></li>
