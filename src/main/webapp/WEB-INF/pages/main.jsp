@@ -121,6 +121,7 @@
         </div>
     </div>
     <div class="panel panel-info" id="right">
+
         <div class="panel-heading">TAGS</div>
         <div class="panel-body">
             <span class="label label-success tag">HTML <span class="badge">42</span></span>

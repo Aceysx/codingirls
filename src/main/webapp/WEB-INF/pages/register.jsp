@@ -11,12 +11,12 @@
     <h1>SIGN UP</h1>
     <div class="form-group">
         <label for="email">EMAIL ADDRESS</label>
-        <input type="email" class="form-control" id="email" placeholder="EMAIL" onblur="checkEmail()">
+        <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" onblur="checkEmail()">
         <span id="email_info"></span>
     </div>
     <div class="form-group">
         <label for="password">PASSWORD</label>
-        <input type="password" class="form-control" id="password" placeholder="PASSWORD">
+        <input type="password" name="password" class="form-control" id="password" placeholder="PASSWORD">
     </div>
     <div class="form-group">
         <label for="password1">PASSWORD CONFIRMATION</label>
@@ -24,13 +24,9 @@
         <span id="password_info"></span>
     </div>
 
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Remember Me
-        </label>
-    </div>
-    <button type="button" onclick="register()" class="btn btn-success">SIGN UP</button>
+    <p onclick="register()"  class="btn btn-success" id="register_btn">SIGN UP</p>
     <button type="reset" class="btn btn-default">Reset</button>
+    <span id="register_info"></span>
 </form>
 <div id="bottom">
     <p>© 2017 Codingrils</p>

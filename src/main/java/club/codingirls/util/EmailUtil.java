@@ -51,7 +51,8 @@ public class EmailUtil {
             // Set Subject: 头部头字段
             message.setSubject("Codingirls 帐号激活链接");
             // 发送 HTML 消息, 可以插入html标签
-            String html = "<a href='http://localhost:8080/activation?code=" + activationCode + "'>点击激活</a>";
+            String url = "http://localhost:8080/activation?code=" + activationCode;
+            String html = "<h3><a href="+url+">点击激活</a></h3><br/>若打不开链接可将地址复制到浏览器地址栏中进行激活  "+url;
 
             message.setContent(html, "text/html;charset=GB2312");
 

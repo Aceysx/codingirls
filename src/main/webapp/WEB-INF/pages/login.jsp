@@ -2,22 +2,41 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>SIGN IN</title>
+    <title>SING UP</title>
 </head>
+<link rel="stylesheet" href="${baseurl}/css/register.css"/>
+<script src="${baseurl}/js/register.js"></script>
 <body>
-<form role="form" action="" method="post" class="login-form">
-    <div class="form-group">
-        <label class="sr-only" for="userName">帐号</label>
-        <input type="text" name="form-username" placeholder="请输入帐号"
-               class="form-username form-control" id="userName">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="password">密码</label>
-        <input type="password" name="form-password" placeholder="请输入密码"
-               class="form-password form-control" id="password">
-    </div>
-    <button type="button" onclick="register()" style="  background: #21a1a1">测试</button>
-</form>
 
+<form id="register">
+    <h1>SIGN UP</h1>
+    <div class="form-group">
+        <label for="email">EMAIL ADDRESS</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" onblur="checkEmail()">
+        <span id="email_info"></span>
+    </div>
+    <div class="form-group">
+        <label for="password">PASSWORD</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="PASSWORD">
+    </div>
+    <div class="form-group">
+        <label for="password1">PASSWORD CONFIRMATION</label>
+        <input type="password" class="form-control" id="password1" placeholder="PASSWORD CONFIRMATION">
+        <span id="password_info"></span>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Remember Me
+        </label>
+    </div>
+    <button type="button" onclick="register(event)" class="btn btn-success">SIGN UP</button>
+    <button type="reset" class="btn btn-default">Reset</button>
+    <span id="register_info"></span>
+</form>
+<div id="bottom">
+    <p>© 2017 Codingrils</p>
+    <p>Built By acey...</p>
+</div>
 </body>
 </html>

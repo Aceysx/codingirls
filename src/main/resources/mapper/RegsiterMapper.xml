@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.codingirls.mapper.RegisterMapper">
+    <select id="exist" parameterType="string" resultType="int">
+        SELECT count(1) FROM t_user WHERE email=#{email}
+    </select>
+
+    <insert id="insert" parameterType="User" >
+        INSERT INTO t_user(email, password, available, activation_code)
+                VALUES (#{email},#{password},0,#{activationCode})
+    </insert>
+
+    <update id="activationCode" parameterType="string">
+        UPDATE t_user SET available = 1 WHERE activation_code = #{code}
+    </update>
+</mapper>

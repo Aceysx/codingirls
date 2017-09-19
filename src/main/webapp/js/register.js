@@ -17,10 +17,20 @@ function checkPassword() {
     return old.length >= 6 && old === now;
 }
 function register() {
-    if(checkPassword()) {
+    if (checkPassword()) {
         $("#password_info").html("");
-        $.post(baseUrl+"/signUp",)
-    }else{
+        let data = $("#register").serialize();
+        $("#register_btn").attr({disabled: "disabled"});
+        $.post(baseUrl + "/signUp", data, (data) => {
+            $("#register_btn").removeAttr("disabled");
+            if (data.result) {
+                $("#register").append(`<div class="alert alert-success" role="alert">${data.msg}</div>`);
+            } else {
+                $("#register_info").html(`<span class="text-danger">${data.msg}</span>`);
+            }
+        });
+
+    } else {
         $("#password_info").html(errorPassword);
     }
 }
