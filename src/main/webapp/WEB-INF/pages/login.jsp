@@ -12,7 +12,7 @@
     <h1>SIGN IN</h1>
     <div class="form-group">
         <label for="email">EMAIL ADDRESS</label>
-        <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" onblur="checkEmail()">
+        <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" >
         <span id="email_info"></span>
     </div>
     <div class="form-group">
@@ -22,10 +22,11 @@
 
     <div class="checkbox">
         <label>
-            <input type="checkbox"> Remember Me
+            <input type="checkbox"  id="rememberMe"> Remember Me
         </label>
     </div>
     <p onclick="login()" class="btn btn-success">SIGN IN</p>
+    <span id="login_info"></span>
     <p><a href="${baseurl}/forgetPassword" class="text-danger">Forgot your password?</a></p>
     <p><a href="${baseurl}/forgetPassword" class="text-danger">Didn't receive confirmation instructions?</a></p>
 </form>
