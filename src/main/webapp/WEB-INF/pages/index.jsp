@@ -10,17 +10,17 @@
     <div id="top">
         <span id="title">CODINGIRLS</span>
         <ul id="nav">
-            <li><a href="${baseurl}/login">SIGN IN</a></li>
-            <li><a href="${baseurl}/register">SIGN UP</a></li>
-            <li><a href="${baseurl}/postJob">POST A JOB</a></li>
-            <li><a href="${baseurl}/modifyInfo">ACCOUNT</a></li>
+            <li><a href="${baseurl}/login" target="main">SIGN IN</a></li>
+            <li><a href="${baseurl}/register" target="main">SIGN UP</a></li>
+            <li><a href="${baseurl}/postJob" target="main">POST A JOB</a></li>
+            <li><a href="${baseurl}/modifyInfo" target="main">ACCOUNT</a></li>
         </ul>
         <%--<button type="button"><a href="${baseurl}/jobDetail">jobDetail</a></button>--%>
         <%--<button type="button"><a href="${baseurl}/myPost">My Post</a></button>--%>
         <%--<button type="button"><a href="${baseurl}/forgetPassword">forget password</a></button>--%>
     </div>
     <div id="main">
-        <iframe src="${baseurl}/main" frameborder="0" scrolling="no" allowtransparency="no" width="100%" height="100%"></iframe>
+        <iframe src="${baseurl}/main" name="main" frameborder="0" scrolling="no" allowtransparency="no" width="100%" height="100%"></iframe>
     </div>
 
 </div>

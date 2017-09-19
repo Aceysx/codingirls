@@ -17,5 +17,5 @@
 #search{display: inline-block;margin: -5px 0 10px 20%}
 .time{float: right;font-size: 20px}
 #right{float: left;width: 30%;margin: 50px 0 0 50px;height: 35px}
-#bottom{position: fixed;left:100px;bottom: 10px}
-.tag{margin: 5px 0 0 3px;display: inline-block}
+
+.tag{margin: 5px 0 0 3px;display: inline-block;cursor: pointer}

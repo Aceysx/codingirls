@@ -18,18 +18,6 @@
     </div>
     <button type="button" onclick="register()" style="  background: #21a1a1">测试</button>
 </form>
-<script>
-    function register() {
-        let userName = $("#userName").val();
-        let password = $("#password").val();
-        $.ajax({
-            url: "${baseurl}/register",
-            data: {name: userName, password: password},
-            success: function (data) {
-                alert(JSON.stringify(data))
-            }
-        });
-    }
-</script>
+
 </body>
 </html>
