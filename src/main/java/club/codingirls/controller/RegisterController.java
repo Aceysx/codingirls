@@ -16,15 +16,25 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("register")
 public class RegisterController {
 
-    @RequestMapping("")
+    @RequestMapping("signUp")
     public Result register(User user) {
         Map<String, Object> result = new HashMap<>();
         try {
 
             return Result.success(result, Constant.SEARCH_SUCCESS);
+        } catch (Exception e) {
+
+            return Result.failure(null, Constant.SEARCH_FAILURE);
+        }
+    }
+
+    @RequestMapping("activation")
+    public Result activation(String code) {
+        try {
+            System.out.println(code);
+            return Result.success(null, Constant.SEARCH_SUCCESS);
         } catch (Exception e) {
 
             return Result.failure(null, Constant.SEARCH_FAILURE);

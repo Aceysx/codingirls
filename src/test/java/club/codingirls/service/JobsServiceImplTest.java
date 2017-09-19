@@ -1,6 +1,5 @@
 package club.codingirls.service;
 
-import club.codingirls.controller.JobsController;
 import club.codingirls.dto.SearchDto;
 import club.codingirls.entity.Jobs;
 import club.codingirls.mapper.JobsMapper;
