@@ -30,6 +30,7 @@
             and is_public = 1 and is_expiry = 0
             and CONCAT(title,company,description) like #{content}
         </where>
+        order by create_time desc
         limit #{start},#{pageSize}
     </select>
 

@@ -11,13 +11,13 @@
         <span id="title">CODINGIRLS</span>
         <ul id="nav">
             <li><a href="${baseurl}" >ALL JOBS</a></li>
-            <li><a href="${baseurl}/postJob" target="main">POST A JOB</a></li>
             <c:choose>
                 <c:when test="${empty sessionScope.user}">
                     <li><a href="${baseurl}/login" target="main">SIGN IN</a></li>
                     <li><a href="${baseurl}/register" target="main">SIGN UP</a></li>
                 </c:when>
                 <c:otherwise>
+                    <li><a href="${baseurl}/postJob" target="main">POST A JOB</a></li>
                     <li><a href="${baseurl}/myPost" target="main">MY POSTS</a></li>
                     <li><a href="${baseurl}/modifyInfo" target="main">ACCOUNT</a></li>
                     <li><a href="${baseurl}/logout">LOGOUT</a></li>
