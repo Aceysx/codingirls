@@ -19,27 +19,28 @@
         </association>
 
     </resultMap>
-    <insert id="insert" parameterType="string">
+    <insert id="insert" parameterType="map">
         INSERT INTO t_job (title, company, description, how_to_apply, category_id, city, country, is_public, is_expiry, user_id, job_type_id)
         VALUES
             (#{title}, #{company}, #{description}, #{howToAapply}, #{categoryId},  #{city}, #{country},
                        #{isPublic}, #{isExpiry}, #{useId}, #{jobTypeId})
     </insert>
 
-    <select id="queryJobsBySearchDto" parameterType="string" resultMap="jobsResult">
+    <select id="queryJobsBySearchDto" parameterType="map" resultMap="jobsResult">
         SELECT t_job.id,title, company, description, how_to_apply, city, country, is_public, is_expiry,
         category.id category_id,category.name category_name,
         type.id job_type_id,type.name type_name
         FROM t_job
-        LEFT JOIN (SELECT id,name FROM t_category) category on category.id = t_job.category_id
-        LEFT JOIN (SELECT id,name FROM t_type) type on type.id = t_job.job_type_id
+        LEFT JOIN (SELECT id,name FROM t_category) category on category.id = category_id
+        LEFT JOIN (SELECT id,name FROM t_type) type on type.id = job_type_id
         <where>
-            <if test="typeId != ''">
-                and job_type_id = #{typeId}
-            </if>
             <if test="categoryId != ''">
                 and category_id = #{categoryId}
             </if>
+            <if test="typeId != ''">
+                and job_type_id = #{typeId}
+            </if>
+
             and title like #{content}
             or company like #{content}
             or description like #{content}
@@ -47,7 +48,7 @@
         limit #{start},#{pageSize}
     </select>
 
-    <select id="queryJobsCount" parameterType="string" resultType="long">
+    <select id="queryJobsCount" parameterType="map" resultType="long">
         SELECT count(1) FROM t_job
         <where>
             <if test="typeId != ''">

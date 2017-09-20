@@ -18,13 +18,13 @@
                     <li><a href="${baseurl}/register" target="main">SIGN UP</a></li>
                 </c:when>
                 <c:otherwise>
+                    <li><a href="${baseurl}/myPost" target="main">MY POSTS</a></li>
                     <li><a href="${baseurl}/modifyInfo" target="main">ACCOUNT</a></li>
                     <li><a href="${baseurl}/logout">LOGOUT</a></li>
                 </c:otherwise>
             </c:choose>
         </ul>
         <%--<button type="button"><a href="${baseurl}/jobDetail">jobDetail</a></button>--%>
-        <%--<button type="button"><a href="${baseurl}/myPost">My Post</a></button>--%>
         <%--<button type="button"><a href="${baseurl}/forgetPassword">forget password</a></button>--%>
     </div>
     <c:if test="${requestScope.result == true}">

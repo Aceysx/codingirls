@@ -2,7 +2,7 @@ package club.codingirls.util;
 
 public class PageUtil {
     private Long totalPage;//总页数
-    private Integer currentIndex;
+    private Integer currentIndex = 1;
     private Integer pageSize = 5; //每页数量
     private Long totalCount;//总记录数
 

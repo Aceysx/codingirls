@@ -4,7 +4,6 @@ public class SearchDto {
     private String typeId;
     private String categoryId;
     private String tagId;
-    private String currentIndex;
     private String searchContent;
 
     public String getTypeId() {
@@ -31,13 +30,6 @@ public class SearchDto {
         this.tagId = tagId;
     }
 
-    public String getCurrentIndex() {
-        return currentIndex;
-    }
-
-    public void setCurrentIndex(String currentIndex) {
-        this.currentIndex = currentIndex;
-    }
 
     public String getSearchContent() {
         return searchContent;

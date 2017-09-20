@@ -32,7 +32,7 @@ public class JobsController {
 
             return Result.success(result, Constant.SEARCH_SUCCESS);
         } catch (Exception e) {
-
+            e.printStackTrace();
             return Result.failure(null, Constant.SEARCH_FAILURE);
         }
     }
