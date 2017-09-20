@@ -22,6 +22,10 @@
                 "email": localStorage.getItem("email"),
                 "password": localStorage.getItem("password")
             }, (data) => {
+                if(!data.result) {
+                    localStorage.removeItem("email");
+                    localStorage.removeItem("password");
+                }
             });
         }
     });

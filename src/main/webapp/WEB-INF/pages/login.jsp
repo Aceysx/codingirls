@@ -27,8 +27,8 @@
     </div>
     <p onclick="login()" class="btn btn-success">SIGN IN</p>
     <span id="login_info"></span>
-    <p><a href="${baseurl}/forgetPassword" class="text-danger">Forgot your password?</a></p>
-    <p><a href="${baseurl}/forgetPassword" class="text-danger">Didn't receive confirmation instructions?</a></p>
+    <p><a href="${baseurl}/forgetPassword" target="main" class="text-danger">Forgot your password?</a></p>
+    <p><a href="${baseurl}/forgetPassword" target="main" class="text-danger">Didn't receive confirmation instructions?</a></p>
 </form>
 <div id="bottom">
     <p>© 2017 Codingrils</p>

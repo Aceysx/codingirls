@@ -37,6 +37,10 @@ public class Result {
         return new Result(true, obj, msg);
     }
 
+    public static Result failure() {
+        return new Result(false);
+    }
+
     public static Result failure(Object obj, String msg) {
         return new Result(false, obj, msg);
     }
