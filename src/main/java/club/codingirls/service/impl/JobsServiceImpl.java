@@ -19,18 +19,37 @@ public class JobsServiceImpl implements JobsService {
     private JobsMapper jobsMapper;
 
     @Override
-    public List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil page) {
+    public List<Map<String,Object>> queryJobsPage(SearchDto searchDto, PageUtil page) {
         Map<String, Object> data = new HashMap<>();
         data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
-        data.put("end", page.getPageSize());
+        data.put("pageSize", page.getPageSize());
         data.put("categoryId", searchDto.getCategoryId());
+        data.put("tagId", searchDto.getTagId());
         data.put("typeId", searchDto.getTypeId());
-        data.put("content", searchDto.getSearchContent());
+        data.put("content", "%"+searchDto.getSearchContent()+"%");
         page.setTotalPage(jobsMapper.queryJobsCount(data));
 
-        return jobsMapper.queryJobsBySearchDto(data);
+        List<Map<String, Object>> jobs = jobsMapper.queryJobsBySearchDto(data);
+        for (Map<String, Object> job : jobs) {
+            job.put("tags",jobsMapper.queryTagsByJobsId(job.get("id").toString()));
+        }
+
+        return jobs;
     }
 
+    @Override
+    public Map<String, Object> load() throws Exception {
+        Map<String, Object> result = new HashMap<>();
+        List<Map<String, String>> categories = jobsMapper.queryAllCategory();
+        List<Map<String, String>> types = jobsMapper.queryAllType();
+        List<Map<String, String>> tags = jobsMapper.queryAllTag();
+
+        result.put("categories", categories);
+        result.put("types", types);
+        result.put("tags", tags);
+
+        return result;
+    }
 
     public void setJobsMapper(JobsMapper jobsMapper) {
         this.jobsMapper = jobsMapper;

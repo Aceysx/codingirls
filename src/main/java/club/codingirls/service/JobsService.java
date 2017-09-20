@@ -9,5 +9,7 @@ import java.util.Map;
 
 public interface JobsService {
 
-    List<Jobs> queryJobsPage(SearchDto searchDto, PageUtil pageUtil);
+    List<Map<String,Object>> queryJobsPage(SearchDto searchDto, PageUtil pageUtil);
+
+    Map<String,Object> load()throws Exception;
 }

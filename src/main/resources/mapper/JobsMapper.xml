@@ -3,22 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="club.codingirls.mapper.JobsMapper">
-    <resultMap id="jobsResult" type="Jobs">
-        <id property="id" column="id"/>
-        <result property="title" column="title"/>
-        <result property="company" column="company"/>
-        <result property="city" column="city"/>
-        <result property="country" column="country"/>
-        <association property="category" column="category_id" javaType="Category">
-            <id property="id" column="category_id"/>
-            <result property="name" column="category_name"/>
-        </association>
-        <association property="jobType" column="job_type_id" javaType="JobType">
-            <id property="id" column="job_type_id"/>
-            <result property="name" column="type_name"/>
-        </association>
-
-    </resultMap>
     <insert id="insert" parameterType="map">
         INSERT INTO t_job (title, company, description, how_to_apply, category_id, city, country, is_public, is_expiry, user_id, job_type_id)
         VALUES
@@ -26,40 +10,60 @@
                        #{isPublic}, #{isExpiry}, #{useId}, #{jobTypeId})
     </insert>
 
-    <select id="queryJobsBySearchDto" parameterType="map" resultMap="jobsResult">
-        SELECT t_job.id,title, company, description, how_to_apply, city, country, is_public, is_expiry,
-        category.id category_id,category.name category_name,
-        type.id job_type_id,type.name type_name
+    <select id="queryJobsBySearchDto" parameterType="map" resultType="map">
+        SELECT t_job.id,title, city, country,
+        category.name category_name,
+        type.name type_name,create_time
         FROM t_job
         LEFT JOIN (SELECT id,name FROM t_category) category on category.id = category_id
         LEFT JOIN (SELECT id,name FROM t_type) type on type.id = job_type_id
+        <if test="tagId != ''">
+            join(SELECT job_id,tag_id FROM  t_job_tag) tag on tag.job_id = t_job.id AND tag.tag_id = #{tagId}
+        </if>
         <where>
             <if test="categoryId != ''">
-                and category_id = #{categoryId}
+                 t_job.category_id = #{categoryId}
             </if>
             <if test="typeId != ''">
-                and job_type_id = #{typeId}
+                and t_job.job_type_id = #{typeId}
             </if>
-
-            and title like #{content}
-            or company like #{content}
-            or description like #{content}
+            and is_public = 1 and is_expiry = 0
+            and CONCAT(title,company,description) like #{content}
         </where>
         limit #{start},#{pageSize}
     </select>
 
     <select id="queryJobsCount" parameterType="map" resultType="long">
         SELECT count(1) FROM t_job
+        <if test="tagId != ''">
+            join(SELECT job_id,tag_id FROM  t_job_tag) tag on tag.job_id = t_job.id AND tag.tag_id = #{tagId}
+        </if>
         <where>
             <if test="typeId != ''">
-                and job_type_id = #{typeId}
+                 job_type_id = #{typeId}
             </if>
             <if test="categoryId != ''">
                 and category_id = #{categoryId}
             </if>
-            and title like #{content}
-            or company like #{content}
-            or description like #{content}
+
+            and CONCAT(title,company,description) like #{content}
         </where>
+    </select>
+    <select id="queryTagsByJobsId" parameterType="string" resultType="map">
+        SELECT tag.name,tag.number  FROM  t_job_tag jobTag
+            LEFT JOIN (SELECT * FROM t_tag) tag on tag.id = jobTag.tag_id
+        WHERE jobTag.job_id = #{id}
+    </select>
+
+    <select id="queryAllCategory" resultType="map">
+        SELECT * FROM t_category
+    </select>
+
+    <select id="queryAllType" resultType="map">
+        SELECT * FROM t_type
+    </select>
+
+    <select id="queryAllTag" resultType="map">
+        SELECT id,number,name FROM t_tag WHERE available = 1
     </select>
 </mapper>

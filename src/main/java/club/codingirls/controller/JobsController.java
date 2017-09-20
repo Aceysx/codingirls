@@ -8,6 +8,7 @@ import club.codingirls.util.Constant;
 import club.codingirls.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -25,9 +26,8 @@ public class JobsController {
     public Result jobs(SearchDto searchDto, PageUtil pageUtil) {
         Map<String, Object> result = new HashMap<>();
         try {
-            List<Jobs> jobs = jobsService.queryJobsPage(searchDto, pageUtil);
+            List<Map<String,Object>> jobs = jobsService.queryJobsPage(searchDto, pageUtil);
             result.put("page", pageUtil);
-            result.put("searchDto", searchDto);
             result.put("jobs", jobs);
 
             return Result.success(result, Constant.SEARCH_SUCCESS);
@@ -36,6 +36,20 @@ public class JobsController {
             return Result.failure(null, Constant.SEARCH_FAILURE);
         }
     }
+
+    @RequestMapping("load")
+    @ResponseBody
+    public Result load() {
+        try {
+            Map<String,Object> result = jobsService.load();
+
+            return Result.success(result, Constant.SEARCH_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure(null, Constant.SEARCH_FAILURE);
+        }
+    }
+
 
     public void setJobsService(JobsService jobsService) {
         this.jobsService = jobsService;
