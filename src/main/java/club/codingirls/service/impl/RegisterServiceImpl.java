@@ -1,7 +1,6 @@
 package club.codingirls.service.impl;
 
 import club.codingirls.entity.User;
-import club.codingirls.mapper.JobsMapper;
 import club.codingirls.mapper.RegisterMapper;
 import club.codingirls.service.RegisterService;
 import club.codingirls.util.EmailUtil;
@@ -28,6 +27,6 @@ public class RegisterServiceImpl implements RegisterService {
         String availableCode = UUID.randomUUID().toString().replace("-", "");
         user.setActivationCode(availableCode);
         registerMapper.insert(user);
-        EmailUtil.send(user.getEmail(), user.getActivationCode());
+        EmailUtil.register(user.getEmail(), user.getActivationCode());
     }
 }

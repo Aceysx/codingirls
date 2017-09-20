@@ -50,4 +50,9 @@ public class Router {
     public String main() {
         return "main";
     }
+
+    @RequestMapping("/resendEmail")
+    public String resendEmail() {
+        return "resendEmail";
+    }
 }

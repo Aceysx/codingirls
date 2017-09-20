@@ -1,6 +1,7 @@
 package club.codingirls.util;
 
 public class Constant {
+    public static final String DEFAULT_PASSWORD = "123456";
     public static final String SEARCH_SUCCESS = "查询成功";
     public static final String SEARCH_FAILURE = "查询失败";
     public static final String ACCOUNT_NOT_EXIST = "邮箱不存在";

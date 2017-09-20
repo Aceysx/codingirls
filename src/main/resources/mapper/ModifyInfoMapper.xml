@@ -15,4 +15,12 @@
     <update id="cancel" parameterType="string">
         UPDATE t_user set available = 0 WHERE email=#{email}
     </update>
+
+    <update id="resetPassword" parameterType="User">
+        UPDATE t_user set password=#{password} WHERE email=#{email}
+    </update>
+
+    <update id="updateActivationCode" parameterType="User">
+        UPDATE t_user set activation_code=#{activationCode} WHERE email=#{email}
+    </update>
 </mapper>

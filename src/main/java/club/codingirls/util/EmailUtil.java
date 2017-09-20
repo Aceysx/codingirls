@@ -7,8 +7,20 @@ import java.util.Properties;
 import java.util.UUID;
 
 public class EmailUtil {
-    public static void send(String to, String activationCode) {
+    public static void register(String to, String activationCode) {
+        String title = "Codingirls 帐号激活";
+        String url = "http://localhost:8080/activation?code=" + activationCode;
+        String html = "<h3><a href=" + url + ">点击激活</a></h3><br/>若打不开链接可将地址复制到浏览器地址栏中进行激活  " + url;
+        send(to, title, html);
+    }
 
+    public static void resetPassword(String to) {
+        String title = "密码已被初始化";
+        String html = "<h3>您的密码已被初始化为"+Constant.DEFAULT_PASSWORD+"</h3>";
+        send(to, title, html);
+    }
+
+    private static void send(String to, String title, String html) {
         // 发件人电子邮箱
         String from = "748890247@qq.com";
 
@@ -49,10 +61,9 @@ public class EmailUtil {
                     new InternetAddress(to));
 
             // Set Subject: 头部头字段
-            message.setSubject("Codingirls 帐号激活链接");
+            message.setSubject(title);
             // 发送 HTML 消息, 可以插入html标签
-            String url = "http://localhost:8080/activation?code=" + activationCode;
-            String html = "<h3><a href="+url+">点击激活</a></h3><br/>若打不开链接可将地址复制到浏览器地址栏中进行激活  "+url;
+
 
             message.setContent(html, "text/html;charset=GB2312");
 
@@ -64,7 +75,10 @@ public class EmailUtil {
         }
     }
 
+
     public static void main(String[] args) {
-        EmailUtil.send("aceysx@163.com", UUID.randomUUID().toString().replace("-",""));
+        EmailUtil.register("aceysx@163.com", UUID.randomUUID().toString().replace("-", ""));
     }
+
+
 }

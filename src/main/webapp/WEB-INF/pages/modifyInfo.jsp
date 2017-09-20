@@ -66,7 +66,7 @@
           title="点击将会把该帐号注销，请慎重" data-delay="0">注销帐号</span>
     <span id="modify_info" class="col-md-offset-3"></span>
     <p class="col-md-offset-3"><a href="${baseurl}/forgetPassword" target="main" class="text-danger">Forgot your password?</a></p>
-    <p class="col-md-offset-3"><a href="${baseurl}/forgetPassword" target="main" class="text-danger">Didn't receive confirmation instructions?</a></p>
+    <p class="col-md-offset-3"><a href="${baseurl}/resendEmail" target="main" class="text-danger">Didn't receive confirmation instructions?</a></p>
 </form>
 </body>
 </html>
