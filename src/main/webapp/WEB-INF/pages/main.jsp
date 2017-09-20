@@ -50,10 +50,10 @@
         <div class="panel-body" id="tag">
         </div>
     </div>
-    <div id="bottom">
-        <p>© 2017 Codingrils</p>
-        <p>Built By acey...</p>
-    </div>
+</div>
+<div id="bottom">
+    <p >© 2017 Codingrils</p>
+    <p>Built By acey...</p>
 </div>
 </body>
 </html>

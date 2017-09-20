@@ -3,6 +3,11 @@
     width: 100%;
     background: blueviolet;
 }
+#logo{
+    position: absolute;
+    clip: rect(0px 45px 100px 0px);
+    margin: 10px 0 0 50px;
+}
 #title{
     font-size: 30px;
     font-weight: bolder;
@@ -32,6 +37,6 @@
 }
 
 #main{
-    height:auto;
+    height:90%;
     width:100%;
 }

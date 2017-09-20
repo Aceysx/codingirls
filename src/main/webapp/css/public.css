@@ -1,4 +1,4 @@
-*{padding: 0;margin: 0;font-family: "Quicksand", "Helvetica Neue", Arial, sans-serif;}
+*{padding: 0;margin: 0;font-family: "Quicksand", "Helvetica Neue", Arial, sans-serif;box-sizing: border-box}
 .divider{
     display: block;
     margin: 10px 0 ;
@@ -6,4 +6,4 @@
     height: 1px;
     background: #e8e8e8;
 }
-#bottom{position: fixed;left:100px;bottom: 10px}
+#bottom{padding: 10px 0 0 100px }
