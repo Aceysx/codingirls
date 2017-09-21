@@ -107,7 +107,7 @@ function postJob() {
     };
     $.post(baseUrl + "/jobs/postJob", data, (data) => {
         if (data.result) {
-            // location.href = baseUrl + "/jobs/detail/" + data.data;
+            location.href = baseUrl + "/jobs/detail/" + data.data;
             return false;
         } else {
 

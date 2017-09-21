@@ -3,20 +3,21 @@ let typeId = "";
 let tagId = "";
 let content = "";
 let currentIndex = 1;
+let page;
 
-function searchCategory(t,id) {
+function searchCategory(t, id) {
     $(t).siblings("li").removeClass("active");
     $(t).addClass("active");
     categoryId = id;
     search();
 }
-function searchType(t,id) {
+function searchType(t, id) {
     $(t).siblings("li").removeClass("active");
     $(t).addClass("active");
     typeId = id;
     search();
 }
-function searchTag(t,id) {
+function searchTag(t, id) {
     $(t).siblings("span").removeClass("tag_select");
     $(t).addClass("tag_select");
     tagId = id;
@@ -36,7 +37,7 @@ function loadJobs(jobs) {
                     </h3>
                     <span class="list-group-item-text category">` + job.category_name + `</span>
                     <span class="list-group-item-text type">` + job.type_name + `</span>
-                    <span class="list-group-item-text place">` + job.country + `,` + job.city + `</span>`;
+                    <span class="list-group-item-text place">` + job.city  + ` ` + job.country+ `</span>`;
         if (job.tags !== null) {
             job.tags.map(tag => {
                 _html += ` <span class="label label-success"> ` + tag.name + ` <span class="badge">` + tag.number + `</span></span>`;
@@ -47,10 +48,13 @@ function loadJobs(jobs) {
     $("#content").html(_html);
 }
 function prePage() {
+    if (currentIndex <= 1) return false;
     --currentIndex;
     search();
+
 }
 function nextPage() {
+    if(currentIndex >= page.totalPage) return false;
     ++currentIndex;
     search();
 }
@@ -74,7 +78,7 @@ function search() {
     };
     $.post(baseUrl + "/jobs", data, (data) => {
         if (data.result) {
-            let page = data.data.page;
+            page = data.data.page;
             adjustPreAndNext(page);
             loadJobs(data.data.jobs);
         }

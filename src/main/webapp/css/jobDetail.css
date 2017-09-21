@@ -1,0 +1,8 @@
+#container{width: 60%;margin: 0 auto}
+#top{height: 200px;margin: 30px 0 }
+#title{margin: 0 0 0 5%}
+.tag{font-size: 12px}
+#time{float: right;margin-right: 20px;font-weight: bold}
+#description,#how_to_apply{padding: 20px 40px}
+#editor{display: none}
+img{width: 100%}
