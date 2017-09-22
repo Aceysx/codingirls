@@ -1,7 +1,7 @@
 .isPublic {width: 140px;display: inline-block;float: right; }
 
 .isPublic span {font-size: 14px;font-weight: bold;}
-#container {width: 60%;margin: 0 auto}
+#container {width: 60%;margin: 0 auto;height: 650px}
 .time{float: right;margin-right: 20px}
 .place{float: right;margin-right: 20%;}
 .time,.place{font-size: 15px;font-style: italic;font-weight: 700;}
