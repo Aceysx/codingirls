@@ -55,6 +55,6 @@ public class RegisterController {
 
         request.setAttribute("result", result);
 
-        return "forward:index";
+        return "index";
     }
 }
