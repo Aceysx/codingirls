@@ -9,7 +9,7 @@ import java.util.UUID;
 public class EmailUtil {
     public static void register(String to, String activationCode) {
         String title = "Codingirls 帐号激活";
-        String url = "http://localhost:8080/activation?code=" + activationCode;
+        String url = "http://120.25.235.144:8080/activation?code=" + activationCode;
         String html = "<h3><a href=" + url + ">点击激活</a></h3><br/>若打不开链接可将地址复制到浏览器地址栏中进行激活  " + url;
         send(to, title, html);
     }
