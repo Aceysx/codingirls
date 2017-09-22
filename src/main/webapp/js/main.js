@@ -9,22 +9,26 @@ function searchCategory(t, id) {
     $(t).siblings("li").removeClass("active");
     $(t).addClass("active");
     categoryId = id;
+    currentIndex = 1;
     search();
 }
 function searchType(t, id) {
     $(t).siblings("li").removeClass("active");
     $(t).addClass("active");
     typeId = id;
+    currentIndex = 1;
     search();
 }
 function searchTag(t, id) {
     $(t).siblings("span").removeClass("tag_select");
     $(t).addClass("tag_select");
     tagId = id;
+    currentIndex = 1;
     search();
 }
 function searchContent() {
     content = $("#search_content").val();
+    currentIndex = 1;
     search();
 }
 

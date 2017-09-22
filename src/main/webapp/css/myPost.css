@@ -1,0 +1,11 @@
+.isPublic {width: 140px;display: inline-block;float: right; }
+
+.isPublic span {font-size: 14px;font-weight: bold;}
+#container {width: 60%;margin: 0 auto}
+.time{float: right;margin-right: 20px}
+.place{float: right;margin-right: 20%;}
+.time,.place{font-size: 15px;font-style: italic;font-weight: 700;}
+.category,.type{font-size: 12px;font-weight: bold;margin: 5px 0 ;display: inline-block}
+#page {margin-left: 50%;}
+.job{padding: 15px 15px 20px 15px}
+#page,#search{display: inline-block}
