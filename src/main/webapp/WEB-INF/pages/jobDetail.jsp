@@ -63,12 +63,9 @@
                 element: document.getElementById("editor"),
                 toolbar: false,
                 toolbarTips: false
-            })
-        ;
-        let description = `${job.description}`;
-        let howToApply = `${job.howToApply}`;
-        $("#description").html(simplemde.markdown(description));
-        $("#how_to_apply").html(simplemde.markdown(howToApply));
+            });
+        $("#description").html(simplemde.markdown(`${job.description}`));
+        $("#how_to_apply").html(simplemde.markdown(`${job.howToApply}`));
     });
 </script>
 </body>

@@ -81,11 +81,11 @@ public class JobsServiceImpl implements JobsService {
 
     @Override
     public void editJob(Jobs jobs) throws Exception {
-        List<String> oldIds = jobsMapper.queryTagIdsByJobsId(jobs.getId()+"");
+        List<String> oldIds = jobsMapper.queryTagIdsByJobsId(jobs.getId() + "");
         jobsMapper.update(jobs);
         List<String> newIds = Arrays.asList(jobs.getTags().split(","));
-        List<String> shouldDeleteTags = shouldDeleteTags(oldIds,newIds);
-        List<String> shouldInsertTags = shouldInsertTags(oldIds,newIds);
+        List<String> shouldDeleteTags = shouldDeleteTags(oldIds, newIds);
+        List<String> shouldInsertTags = shouldInsertTags(oldIds, newIds);
         if (shouldInsertTags.size() > 0 && !"".equals(shouldInsertTags.get(0))) {
             jobsMapper.insertTags(shouldInsertTags, jobs.getId());
             jobsMapper.tagAddCount(shouldInsertTags);
@@ -122,9 +122,12 @@ public class JobsServiceImpl implements JobsService {
 
     @Override
     public Map<String, Object> queryJobsById(String id) throws Exception {
-        Map<String,Object> job = jobsMapper.queryJobsById(id);
+        Map<String, Object> job = jobsMapper.queryJobsById(id);
         job.put("tags", jobsMapper.queryTagsByJobsId(job.get("id").toString()));
-
+        String description = job.get("description").toString().replace("`", "\\`");
+        String howToApply = job.get("howToApply").toString().replace("`", "\\`");
+        job.put("description", description);
+        job.put("howToApply", howToApply);
         return job;
     }
 
