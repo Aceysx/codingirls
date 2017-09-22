@@ -3,13 +3,46 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="club.codingirls.mapper.JobsMapper">
-    <insert id="insert" parameterType="map">
-        INSERT INTO t_job (title, company, description, how_to_apply, category_id, city, country, is_public, is_expiry, user_id, job_type_id)
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Jobs">
+        INSERT INTO t_job (expiry_time, create_time, title, company, description, how_to_apply, category_id, city, country,
+                           is_public, is_expiry, user_id, job_type_id)
         VALUES
-            (#{title}, #{company}, #{description}, #{howToAapply}, #{categoryId},  #{city}, #{country},
-                       #{isPublic}, #{isExpiry}, #{useId}, #{jobTypeId})
+            (#{expiryTime}, #{createTime}, #{title}, #{company}, #{description}, #{howToApply}, #{categoryId}, #{city},
+                            #{country},
+                            1, 0, #{userId}, #{typeId})
     </insert>
-
+    <update id="update" parameterType="Jobs">
+        UPDATE t_job SET title=#{title},company=#{company},expiry_time=#{expiryTime},category_id=#{categoryId},job_type_id=#{typeId},
+            country=#{country},city=#{city},description=#{description},how_to_apply=#{howToApply},is_public=1
+        WHERE id=#{id}
+    </update>
+    <insert id="insertTags">
+        INSERT INTO t_job_tag (tag_id,job_id)
+        VALUES
+        <foreach collection="tags" item="item" index="index" separator=",">
+            (#{item},#{id})
+        </foreach>
+    </insert>
+    <delete id="deleteTags" parameterType="string">
+        DELETE FROM t_job_tag WHERE job_id = #{id} and  tag_id in
+        <foreach collection="tags" item="item" open="(" close=")" index="index" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+    <update id="tagReduceCount" parameterType="string">
+        UPDATE t_tag SET number = number - 1
+        WHERE id IN
+        <foreach collection="tags" item="item" open="(" close=")" index="index" separator=",">
+            #{item}
+        </foreach>
+    </update>
+    <update id="tagAddCount" parameterType="string">
+        UPDATE t_tag SET number = number +1
+        WHERE id IN
+        <foreach collection="tags" item="item" open="(" close=")" index="index" separator=",">
+            #{item}
+        </foreach>
+    </update>
     <select id="queryJobsBySearchDto" parameterType="map" resultType="map">
         SELECT t_job.id,title, city, country,
         category.name category_name,
@@ -18,11 +51,11 @@
         LEFT JOIN (SELECT id,name FROM t_category) category on category.id = category_id
         LEFT JOIN (SELECT id,name FROM t_type) type on type.id = job_type_id
         <if test="tagId != ''">
-            join(SELECT job_id,tag_id FROM  t_job_tag) tag on tag.job_id = t_job.id AND tag.tag_id = #{tagId}
+            join(SELECT job_id,tag_id FROM t_job_tag) tag on tag.job_id = t_job.id AND tag.tag_id = #{tagId}
         </if>
         <where>
             <if test="categoryId != ''">
-                 t_job.category_id = #{categoryId}
+                t_job.category_id = #{categoryId}
             </if>
             <if test="typeId != ''">
                 and t_job.job_type_id = #{typeId}
@@ -34,37 +67,106 @@
         limit #{start},#{pageSize}
     </select>
 
+    <select id="queryOwnJobsBySearchDto" parameterType="map" resultType="map">
+        SELECT t_job.id,title, city, country,
+        category.name category,
+        type.name type,create_time createTime,is_public isPublic
+        FROM t_job
+        LEFT JOIN (SELECT id,name FROM t_category) category on category.id = category_id
+        LEFT JOIN (SELECT id,name FROM t_type) type on type.id = job_type_id
+        <where>
+            <if test="isPublic != ''">
+                t_job.is_public = #{isPublic}
+            </if>
+            and t_job.user_id = #{userId}
+        </where>
+        order by create_time desc
+        limit #{start},#{pageSize}
+    </select>
+    <select id="queryJobsById" parameterType="string" resultType="map">
+        SELECT
+            t_job.id,
+            title,
+            company,
+            description,
+            how_to_apply  howToApply,
+            create_time   createTime,
+            is_public     isPublic,
+            country,
+            expiry_time expiryTime,
+            city,
+            category.name category,
+            category_id categoryId,
+            type.name     type,
+            job_type_id typeId,
+            user_id userId
+        FROM t_job
+            LEFT JOIN (SELECT
+                           id,
+                           name
+                       FROM t_category) category ON category.id = category_id
+            LEFT JOIN (SELECT
+                           id,
+                           name
+                       FROM t_type) type ON type.id = job_type_id
+        WHERE t_job.id = #{id}
+    </select>
     <select id="queryJobsCount" parameterType="map" resultType="long">
         SELECT count(1) FROM t_job
         <if test="tagId != ''">
-            join(SELECT job_id,tag_id FROM  t_job_tag) tag on tag.job_id = t_job.id AND tag.tag_id = #{tagId}
+            join(SELECT job_id,tag_id FROM t_job_tag) tag on tag.job_id = t_job.id AND tag.tag_id = #{tagId}
         </if>
         <where>
             <if test="typeId != ''">
-                 job_type_id = #{typeId}
+                job_type_id = #{typeId}
             </if>
             <if test="categoryId != ''">
                 and category_id = #{categoryId}
             </if>
-
             and CONCAT(title,company,description) like #{content}
         </where>
     </select>
+    <select id="queryOwnJobsCount" parameterType="map" resultType="long">
+        SELECT count(1) FROM t_job
+        <where>
+            <if test="isPublic != ''">
+                and t_job.is_public = #{isPublic}
+            </if>
+            and user_id = #{userId}
+        </where>
+    </select>
     <select id="queryTagsByJobsId" parameterType="string" resultType="map">
-        SELECT tag.name,tag.number  FROM  t_job_tag jobTag
-            LEFT JOIN (SELECT * FROM t_tag) tag on tag.id = jobTag.tag_id
+        SELECT
+            tag.name,
+            tag.number
+        FROM t_job_tag jobTag
+            LEFT JOIN (SELECT *
+                       FROM t_tag) tag ON tag.id = jobTag.tag_id
         WHERE jobTag.job_id = #{id}
     </select>
-
+    <select id="queryTagIdsByJobsId" parameterType="string" resultType="string">
+        select tag_id FROM t_job_tag WHERE job_id = #{id}
+    </select>
     <select id="queryAllCategory" resultType="map">
-        SELECT * FROM t_category
+        SELECT *
+        FROM t_category
     </select>
 
     <select id="queryAllType" resultType="map">
-        SELECT * FROM t_type
+        SELECT *
+        FROM t_type
     </select>
 
     <select id="queryAllTag" resultType="map">
-        SELECT id,number,name FROM t_tag WHERE available = 1
+        SELECT
+            id,
+            number,
+            name
+        FROM t_tag
+        WHERE available = 1
     </select>
+
+    <update id="updatePublicState" parameterType="Jobs">
+        UPDATE t_job SET is_public = #{isPublic} WHERE id = #{id}
+    </update>
 </mapper>

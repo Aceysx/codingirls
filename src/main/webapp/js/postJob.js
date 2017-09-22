@@ -88,9 +88,7 @@ function tagIds() {
     }
     return result.join(",");
 }
-function checkForm() {
 
-}
 function postJob() {
 
     let data = {

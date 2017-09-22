@@ -5,6 +5,15 @@ public class SearchDto {
     private String categoryId;
     private String tagId;
     private String searchContent;
+    private String isPublic;
+
+    public String getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(String isPublic) {
+        this.isPublic = isPublic;
+    }
 
     public String getTypeId() {
         return typeId;

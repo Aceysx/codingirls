@@ -3,12 +3,14 @@ let howToApplyMarkdown;
 let allTags = [];
 
 function initTags(data) {
+    let initTags = initTag();
     allTags = data;
     let tags = [];
     for (let tag of data) {
         tags.push(tag.name);
     }
     $('#tag').inputTags({
+        tags: initTags,
         max: 4,
         autocomplete: {
             values: tags,
@@ -70,8 +72,6 @@ function createMarkdown(id) {
         }], // Another optional usage, with a custom status bar item that counts keystrokes
         styleSelectedText: false,
         tabSize: 4,
-        //toolbar: flase,
-        //toolbarTips: false,
     });
 }
 function initMarkdown() {
@@ -88,12 +88,11 @@ function tagIds() {
     }
     return result.join(",");
 }
-function checkForm() {
 
-}
 function postJob() {
 
     let data = {
+        "id": $("#id").val(),
         "title": $("#title").val(),
         "company": $("#company").val(),
         "expiryTime": $("#expiry_date").val(),
@@ -105,7 +104,7 @@ function postJob() {
         "description": descriptionMarkdown.value(),
         "howToApply": howToApplyMarkdown.value()
     };
-    $.post(baseUrl + "/jobs/postJob", data, (data) => {
+    $.post(baseUrl + "/jobs/editJob", data, (data) => {
         if (data.result) {
             location.href = baseUrl + "/jobs/detail/" + data.data;
         }
@@ -125,6 +124,9 @@ function loadCategoriesTypesTags() {
             initTags(data.data.tags);
             loadSelects(data.data.categories, "category");
             loadSelects(data.data.types, "job_type");
+            categorySelect();
+            typeSelect();
+
         }
     });
 
@@ -136,11 +138,14 @@ function loadCountry() {
         _html += `<option value="` + c + `">` + c + `</option>`;
     });
     $("#country").html(_html);
+    countrySelect();
 }
+
 $(function () {
     initMarkdown();
     loadCategoriesTypesTags();
-    loadCountry()
+    loadCountry();
+
 });
 
 

@@ -14,6 +14,7 @@
 </head>
 <form id="postJob" class="form-horizontal" onsubmit="return postJob()">
     <h1 class="col-md-offset-2" style="text-align: left">Post a Job</h1>
+
     <div class="form-group">
         <label for="title" class="col-sm-3 control-label">Title</label>
         <div class="col-sm-5">
@@ -22,7 +23,7 @@
     </div>
     <div class="form-group">
         <label class="col-sm-3 control-label" for="company">Company</label>
-        <div class="col-sm-5">
+        <div class="col-sm-2">
             <input type="text" class="form-control" id="company" name="company" required>
         </div>
         <span id="password_info" class="col-md-offset-3"></span>

@@ -1,6 +1,6 @@
 package club.codingirls.entity;
 
-import java.util.List;
+import java.util.Date;
 
 public class Jobs {
     private int id;
@@ -8,14 +8,40 @@ public class Jobs {
     private String company;
     private String description;
     private String howToApply;
-    private Category category;
-    private JobType jobType;
-    private List<Tags> tags;
+    private String categoryId;
+    private String typeId;
+    private String tags;
     private String city;
     private String country;
+    private String expiryTime;
+    private Date createTime = new Date();
     private int isPublic;
     private int isExpiry;
-    private User user;
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getExpiryTime() {
+        return expiryTime;
+    }
+
+    public void setExpiryTime(String expiryTime) {
+        this.expiryTime = expiryTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public int getId() {
         return id;
@@ -57,12 +83,11 @@ public class Jobs {
         this.howToApply = howToApply;
     }
 
-
-    public List<Tags> getTags() {
+    public String getTags() {
         return tags;
     }
 
-    public void setTags(List<Tags> tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 
@@ -98,27 +123,20 @@ public class Jobs {
         this.isExpiry = isExpiry;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public JobType getJobType() {
-        return jobType;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setJobType(JobType jobType) {
-        this.jobType = jobType;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

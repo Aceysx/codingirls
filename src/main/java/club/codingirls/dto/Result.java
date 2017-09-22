@@ -68,4 +68,8 @@ public class Result {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public static Result success(Object obj) {
+        return new Result(true, obj, null);
+    }
 }
