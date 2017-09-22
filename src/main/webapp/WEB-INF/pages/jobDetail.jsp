@@ -5,8 +5,8 @@
     <title>job detail</title>
 </head>
 <link rel="stylesheet" href="${baseurl}/public/markdown/simplemde.min.css">
-<script src="${baseurl}/public/markdown/simplemde.min.js"></script>
 <link rel="stylesheet" href="${baseurl}/css/jobDetail.css">
+<script src="${baseurl}/public/markdown/simplemde.min.js"></script>
 <script src="${baseurl}/js/jobDetail.js"></script>
 <body>
 <div id="container">
@@ -26,10 +26,15 @@
             </p>
         </div>
     </div>
+    <c:if test="${user.id == job.userId}">
+        <div id="per">
+            <a href="${baseurl}/jobs/edit/${requestScope.job.id}" class="btn btn-primary" id="edit">Edit</a>
+        </div>
+    </c:if>
     <div id="content">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Description</h3>
+                <h3 class="panel-title" style="padding-top: 0">Description</h3>
             </div>
             <div class="panel-body" id="description">
 
@@ -37,7 +42,7 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">How to apply</h3>
+                <h3 class="panel-title" style="padding-top: 0">How to apply</h3>
             </div>
             <div class="panel-body" id="how_to_apply">
 
