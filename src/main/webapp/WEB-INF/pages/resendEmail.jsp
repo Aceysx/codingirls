@@ -18,8 +18,8 @@
 
     <p onclick="resendEmail()" class="btn btn-success" id="resend_btn">Resend confirmation instructions</p>
     <span id="resend_info"></span>
-    <p><a href="${baseurl}/singIn" target="main" class="text-danger">Sign in</a></p>
-    <p><a href="${baseurl}/signUp" target="main" class="text-danger">Sign up</a></p>
+    <p><a href="${baseurl}/login" target="main" class="text-danger">Sign in</a></p>
+    <p><a href="${baseurl}/register" target="main" class="text-danger">Sign up</a></p>
     <p><a href="${baseurl}/forgetPassword" target="main" class="text-danger">Forgot your password?</a></p>
 </form>
 <div id="bottom">

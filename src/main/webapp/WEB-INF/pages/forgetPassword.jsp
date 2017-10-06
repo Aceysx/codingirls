@@ -18,8 +18,8 @@
 
     <p onclick="resetPassword()" class="btn btn-success" id="forget_btn">Send me reset password instructions</p>
     <span id="password_info"></span>
-    <p><a href="${baseurl}/singIn" target="main" class="text-danger">Sign in</a></p>
-    <p><a href="${baseurl}/signUp" target="main" class="text-danger">Sign up</a></p>
+    <p><a href="${baseurl}/login" target="main" class="text-danger">Sign in</a></p>
+    <p><a href="${baseurl}/register" target="main" class="text-danger">Sign up</a></p>
     <p><a href="${baseurl}/resendEmail" target="main" class="text-danger">Didn't receive confirmation instructions?</a></p>
 </form>
 <div id="bottom">
