@@ -30,10 +30,10 @@ services:
       - MYSQL_DATABASE=codingirls
       - MYSQL_PASSWORD=12345678
       - MYSQL_USER=codingirls
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     tmpfs:
       - /var/lib/mysql/:rw,noexec,nosuid,size=600m
       - /tmp/:rw,noexec,nosuid,size=50m
-
     networks:
       main:
         aliases:
