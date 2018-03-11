@@ -6,3 +6,5 @@ out/
 db.properties
 rebel.xml
 rebble-remote.xml
+data
+log
