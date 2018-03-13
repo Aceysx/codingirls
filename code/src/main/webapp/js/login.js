@@ -17,6 +17,4 @@ function login() {
             $("#login_info").html(`<span class="text-danger">${data.msg}</span>`);
         }
     });
-
-
 }

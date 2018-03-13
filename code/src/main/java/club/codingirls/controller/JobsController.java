@@ -2,6 +2,8 @@ package club.codingirls.controller;
 
 import club.codingirls.dto.Result;
 import club.codingirls.dto.SearchDto;
+import club.codingirls.entity.Apply;
+import club.codingirls.entity.Discuss;
 import club.codingirls.entity.Jobs;
 import club.codingirls.entity.User;
 import club.codingirls.mapper.JobsMapper;
@@ -10,10 +12,7 @@ import club.codingirls.util.Constant;
 import club.codingirls.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -119,7 +118,11 @@ public class JobsController {
     public String detail(@PathVariable("id") String id, HttpServletRequest request) {
         try {
             Map<String, Object> job = jobsService.queryJobsById(id);
+            List<Map> discuss = jobsMapper.queryJobDiscuss(id);
+            System.out.println(discuss);
             request.setAttribute("job", job);
+            request.setAttribute("discuss", discuss);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,11 +130,67 @@ public class JobsController {
         return "jobDetail";
     }
 
+    @RequestMapping("detail/apply/{id}")
+    public String apply(@PathVariable("id") String id, HttpServletRequest request) {
+        try {
+            List<Map> discuss = jobsMapper.queryJobApplys(id);
+            System.out.println(discuss);
+            request.setAttribute("applys", discuss);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "postApply";
+    }
+
+    @RequestMapping("/apply/{id}/{allow}")
+    @ResponseBody
+    public String changeApplyStatus(@PathVariable("id") String id, @PathVariable("allow") int allow) {
+        try {
+            Map data = new HashMap();
+            data.put("id", id);
+            data.put("allow", allow);
+            jobsMapper.changeApplyStatus(data);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "postApply";
+    }
+
     @RequestMapping("edit/{id}")
     public String edit(@PathVariable("id") String id, HttpServletRequest request) {
         try {
             Map<String, Object> job = jobsService.queryJobsById(id);
+
             request.setAttribute("job", job);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "edit";
+    }
+
+    @RequestMapping("submitApply")
+    @ResponseBody
+    public String submitApply(Apply apply, HttpServletRequest request) {
+        try {
+            System.out.println(apply);
+            jobsMapper.saveApply(apply);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "edit";
+    }
+
+    @RequestMapping("submitDiscuss")
+    @ResponseBody
+    public String submitDiscuss(Discuss discuss, HttpServletRequest request) {
+        try {
+            jobsMapper.saveDiscuss(discuss);
         } catch (Exception e) {
             e.printStackTrace();
         }

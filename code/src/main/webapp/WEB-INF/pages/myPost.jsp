@@ -2,7 +2,7 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>MY POST</title>
+    <title>我的发布</title>
 </head>
 <link rel="stylesheet" href="${baseurl}/public/switch/default.css">
 <link rel="stylesheet" href="${baseurl}/public/switch/main.css">
@@ -12,13 +12,13 @@
 <body style="padding-top: 0">
 <div id="container">
     <div class="page-header">
-        <h1>MY POSTS</h1>
+        <h1>发布管理</h1>
     </div>
     <form class="form-inline">
         <ul class="nav nav-pills" id="search">
             <li role="presentation" class="active " onclick="searchState(this,'')"><a href="javascript:(0)">ALL</a>
-            <li role="presentation" onclick="searchState(this,1)"><a href="javascript:(0)">Public</a>
-            <li role="presentation" onclick="searchState(this,0)"><a href="javascript:(0)">Hidden</a>
+            <li role="presentation" onclick="searchState(this,1)"><a href="javascript:(0)">已发布</a>
+            <li role="presentation" onclick="searchState(this,0)"><a href="javascript:(0)">隐藏</a>
         </ul>
         <ul class="pager" id="page">
             <li id="pre" onclick="prePage()" class="disabled"><a href="javascript:(0)"><span

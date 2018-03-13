@@ -9,7 +9,7 @@ $(function () {
 function showJobs(jobs) {
     let _html = "";
     jobs.map(job => {
-        _html += `<a href="` + baseUrl + `/jobs/detail/` + job.id + `" class="list-group-item job">
+        _html += `<a href="` + baseUrl + `/jobs/detail/apply/` + job.id + `" class="list-group-item job">
                     <h3 class="list-group-item-heading content_title" style="padding-top: 0">${job.title}
                         <div class="checkbox checkbox-slider-md checkbox-slider--b-flat checkbox-slider-success isPublic">
                             <label>

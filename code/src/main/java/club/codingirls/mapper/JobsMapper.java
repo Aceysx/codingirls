@@ -1,5 +1,7 @@
 package club.codingirls.mapper;
 
+import club.codingirls.entity.Apply;
+import club.codingirls.entity.Discuss;
 import club.codingirls.entity.Jobs;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,6 +29,7 @@ public interface JobsMapper {
     void tagAddCount(@Param("tags") List<String> tags);
 
     Map<String,Object> queryJobsById(String id);
+    List<Map> queryJobDiscuss(String id);
 
     Long queryOwnJobsCount(Map<String, Object> data);
 
@@ -41,4 +44,12 @@ public interface JobsMapper {
     void tagReduceCount(@Param("tags")List<String> shouldDeleteTags);
 
     void deleteTags(@Param("tags") List<String> shouldDeleteTags, @Param("id") int id);
+
+    void saveApply(Apply apply);
+
+    List<Map> queryJobApplys(String id);
+
+    void changeApplyStatus(Map data);
+
+    void saveDiscuss(Discuss discuss);
 }

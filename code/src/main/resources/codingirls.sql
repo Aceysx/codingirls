@@ -195,11 +195,25 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+CREATE TABLE t_discuss
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(10000),
+    jobId INT,
+    creatorId INT
+);
 --
 -- Dumping data for table `t_user`
 --
-
+CREATE TABLE t_apply
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    jobId INT,
+    name VARCHAR(100),
+    phone VARCHAR(100),
+    description VARCHAR(10000)
+);
+ALTER TABLE t_apply ADD allow INT NULL;
 LOCK TABLES `t_user` WRITE;
 /*!40000 ALTER TABLE `t_user` DISABLE KEYS */;
 INSERT INTO `t_user` VALUES (31,'aceysx@163.com','111111',1,'d231ff23704c45b392060f916057ace9','Eurasia','陕西西安','IT'),(33,'748890247@qq.com','111111',1,'255fa884afdf46dc8124e67a6599f6bd','Eurasia11','陕西西安','IT'),(34,'977986310@qq.com','CABB948233af',1,'8aa74759f4bb48b8b864e86d0b19c704',NULL,NULL,NULL);

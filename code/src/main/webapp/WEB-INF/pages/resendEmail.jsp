@@ -2,25 +2,25 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>FORGET PASSWORD</title>
+    <title>忘记密码</title>
 </head>
 <link rel="stylesheet" href="${baseurl}/css/resendEmail.css"/>
 <script src="${baseurl}/js/resendEmail.js"></script>
 <body>
 
 <form id="resendEmail">
-    <h1>Resend confirmation instructions</h1>
+    <h1>重新发送邮件</h1>
     <div class="form-group">
-        <label for="email">EMAIL ADDRESS</label>
+        <label for="email">邮件地址</label>
         <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" >
         <span id="email_info"></span>
     </div>
 
-    <p onclick="resendEmail()" class="btn btn-success" id="resend_btn">Resend confirmation instructions</p>
+    <p onclick="resendEmail()" class="btn btn-success" id="resend_btn">重新发送</p>
     <span id="resend_info"></span>
-    <p><a href="${baseurl}/login" target="main" class="text-danger">Sign in</a></p>
-    <p><a href="${baseurl}/register" target="main" class="text-danger">Sign up</a></p>
-    <p><a href="${baseurl}/forgetPassword" target="main" class="text-danger">Forgot your password?</a></p>
+    <p><a href="${baseurl}/login" target="main" class="text-danger">登录</a></p>
+    <p><a href="${baseurl}/register" target="main" class="text-danger">注册</a></p>
+    <p><a href="${baseurl}/forgetPassword" target="main" class="text-danger">忘记密码？</a></p>
 </form>
 <div id="bottom">
     <p>© 2017 Codingrils</p>

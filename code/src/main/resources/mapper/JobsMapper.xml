@@ -23,6 +23,16 @@
             (#{item},#{id})
         </foreach>
     </insert>
+    <insert id="saveApply">
+        INSERT INTO t_apply (jobId, name, phone, description)
+        VALUES
+        (#{jobId},#{name},#{phone},#{description})
+    </insert>
+    <insert id="saveDiscuss">
+        INSERT INTO t_discuss (content, jobId, creatorId)
+        VALUES
+        (#{content},#{jobId},#{creatorId})
+    </insert>
     <delete id="deleteTags" parameterType="string">
         DELETE FROM t_job_tag WHERE job_id = #{id} and  tag_id in
         <foreach collection="tags" item="item" open="(" close=")" index="index" separator=",">
@@ -35,6 +45,10 @@
         <foreach collection="tags" item="item" open="(" close=")" index="index" separator=",">
             #{item}
         </foreach>
+    </update>
+    <update id="changeApplyStatus" >
+        UPDATE t_apply SET allow = #{allow}
+        WHERE id =#{id}
     </update>
     <update id="tagAddCount" parameterType="string">
         UPDATE t_tag SET number = number +1
@@ -82,6 +96,15 @@
         </where>
         order by create_time desc
         limit #{start},#{pageSize}
+    </select>
+    <select id="queryJobDiscuss" parameterType="string" resultType="map">
+        SELECT t_discuss.content,user_.email FROM t_discuss
+        LEFT JOIN (SELECT * FROM t_user) user_ ON user_.id = t_discuss.creatorId
+        WHERE t_discuss.jobId = #{id}
+    </select>
+    <select id="queryJobApplys" parameterType="string" resultType="map">
+        SELECT name,phone,description,allow FROM t_apply
+        WHERE t_apply.jobId = #{id}
     </select>
     <select id="queryJobsById" parameterType="string" resultType="map">
         SELECT

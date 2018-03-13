@@ -10,20 +10,20 @@
     <div id="top">
         <a href="${baseurl}">
             <img src="${baseurl}/imgs/logo.jpg" height="40px" id="logo">
-            <span id="title">CODINGIRLS</span>
+            <span id="title">某某信息招募平台</span>
         </a>
         <ul id="nav">
-            <li><a href="${baseurl}">ALL JOBS</a></li>
+            <li><a href="${baseurl}">首页</a></li>
             <c:choose>
                 <c:when test="${empty sessionScope.user}">
-                    <li><a href="${baseurl}/login" target="main">SIGN IN</a></li>
-                    <li><a href="${baseurl}/register" target="main">SIGN UP</a></li>
+                    <li><a href="${baseurl}/login" target="main">登录</a></li>
+                    <li><a href="${baseurl}/register" target="main">注册</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${baseurl}/postJob" target="main">POST A JOB</a></li>
-                    <li><a href="${baseurl}/myPost" target="main">MY POSTS</a></li>
-                    <li><a href="${baseurl}/modifyInfo" target="main">ACCOUNT</a></li>
-                    <li><a href="${baseurl}/logout">LOGOUT</a></li>
+                    <li><a href="${baseurl}/postJob" target="main">信息发布</a></li>
+                    <li><a href="${baseurl}/myPost" target="main">我的发布</a></li>
+                    <li><a href="${baseurl}/modifyInfo" target="main">个人信息</a></li>
+                    <li><a href="${baseurl}/logout">注销</a></li>
                 </c:otherwise>
             </c:choose>
         </ul>

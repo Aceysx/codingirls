@@ -101,7 +101,8 @@ function postJob() {
         "city": $("#city").val(),
         "tags": tagIds(),
         "description": descriptionMarkdown.value(),
-        "howToApply": howToApplyMarkdown.value()
+        "howToApply": ""
+        // "howToApply": howToApplyMarkdown.value()
     };
     $.post(baseUrl + "/jobs/postJob", data, (data) => {
         if (data.result) {

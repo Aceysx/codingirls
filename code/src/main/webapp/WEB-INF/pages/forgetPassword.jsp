@@ -2,7 +2,7 @@
 <%@ include file="../public/tag.jsp" %>
 <html>
 <head>
-    <title>FORGET PASSWORD</title>
+    <title>忘记密码</title>
 </head>
 <link rel="stylesheet" href="${baseurl}/css/forgetPassword.css"/>
 <script src="${baseurl}/js/forgetPassword.js"></script>
@@ -11,16 +11,16 @@
 <form id="forgetPassword">
     <h1>Forgot your password?</h1>
     <div class="form-group">
-        <label for="email">EMAIL ADDRESS</label>
+        <label for="email">邮箱地址</label>
         <input type="email" name="email" class="form-control" id="email" placeholder="EMAIL" >
         <span id="email_info"></span>
     </div>
 
-    <p onclick="resetPassword()" class="btn btn-success" id="forget_btn">Send me reset password instructions</p>
+    <p onclick="resetPassword()" class="btn btn-success" id="forget_btn">发送重置密码</p>
     <span id="password_info"></span>
-    <p><a href="${baseurl}/login" target="main" class="text-danger">Sign in</a></p>
-    <p><a href="${baseurl}/register" target="main" class="text-danger">Sign up</a></p>
-    <p><a href="${baseurl}/resendEmail" target="main" class="text-danger">Didn't receive confirmation instructions?</a></p>
+    <p><a href="${baseurl}/login" target="main" class="text-danger">登录</a></p>
+    <p><a href="${baseurl}/register" target="main" class="text-danger">注册</a></p>
+    <p><a href="${baseurl}/resendEmail" target="main" class="text-danger">没有收到邮箱？</a></p>
 </form>
 <div id="bottom">
     <p>© 2017 Codingrils</p>
