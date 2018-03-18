@@ -9,6 +9,13 @@
 <script type="text/javascript" src="${baseurl}/public/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${baseurl}/public/css/bootstrap.min.css">
 <link rel="stylesheet" href="${baseurl}/css/public.css">
+<link rel="stylesheet" type="text/css" href="${baseurl}/public/Assets/css/reset.css"/>
+<script type="text/javascript" src="${baseurl}/public/Assets/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="${baseurl}/public/Assets/js/js_z.js"></script>
+<link rel="stylesheet" type="text/css" href="${baseurl}/public/Assets/plugins/FlexSlider/flexslider.css">
+<script type="text/javascript" src="${baseurl}/public/Assets/plugins/FlexSlider/jquery.flexslider.js"></script>
+<link rel="stylesheet" type="text/css" href="${baseurl}/public/Assets/css/thems.css">
+<link rel="stylesheet" type="text/css" href="${baseurl}/public/Assets/css/responsive.css">
 <script>
     var baseUrl ;
     function isRememberMe() {

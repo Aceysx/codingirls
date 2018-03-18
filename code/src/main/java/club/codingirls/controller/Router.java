@@ -11,6 +11,21 @@ public class Router {
         return "redirect:index";
     }
 
+    @RequestMapping("/indexMain")
+    public String indexMain() {
+        return "indexMain";
+    }
+
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+    @RequestMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
     @RequestMapping("/forgetPassword")
     public String forgetPassword() {
         return "forgetPassword";
